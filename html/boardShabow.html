@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            /*모든 버튼에 적용되는 효과*/
+            button{
+                background-color: #176b37;
+                color:white;
+                padding: 10px 20px;
+                cursor: pointer;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.3); /*그림자 추가*/
+                transition: background-color 0.3s, box-shadow 0.3s; /*마우스 가져다대면 색상 반짝이기*/
+            }
+
+            /*마우스 호버시 스타일 변경*/
+            button:hover{
+                background-color: cornflowerblue;
+                box-shadow: 20px 20px 5px rgb(20 26 239/50%); /*그림자 오퍼시티*/
+            }
+            .container{
+                max-width: 800px; /*최대 너비 지정*/
+            }
+
+            h1 {
+                text-align: center; /*어디서든지 h1은 페이지 가운데에 잇다*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>덤딤 메뉴</h1>
+            <ul>
+                <!--게시물 목록 작성-->
+                <li>
+                    <h2>샐러디 역삼점</h2>
+                    <p>메뉴 더보기 ☞ <a href="fishing.html"> 클릭 </a></p>
+                </li>
+                <li>
+                    <h2>명동칼국수 역삼점</h2>
+                    <p>만두칼국수 9000원</p>
+                </li>
+                <li>
+                    <!--메뉴 추가-->
+                    <h2>새 게시물 작성하기</h2>
+                    <form>
+                        <input type="text" placeholder="제목">
+                        <textarea placeholder="내용을 작성하세요"></textarea>
+                        <div class="button">
+                            <button type="submit">작성완료</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
