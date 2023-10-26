@@ -15,6 +15,7 @@ button:hover{
 }
 .container{
     max-width: 800px; /*최대 너비 지정*/
+    margin:auto;
 }
 h1 {
     text-align: center; /*어디서든지 h1은 페이지 가운데에 잇다*/

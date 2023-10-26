@@ -1,0 +1,62 @@
+*{
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'establishRetrosansOTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/establishRetrosansOTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    font-family: 'establishRetrosansOTF';
+    background-color: #f3f3f3;
+}
+h1{
+    text-align: center;
+    font-size:28px;
+}
+h2{
+    text-align: center;
+    font-size:28px;
+}
+#container{/*id는 #d으로 씀*/
+    width: 80%;
+    margin: 0 auto; /*가운데 정렬*/
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+.post{
+    border: 1ps solid #ddd;
+    margin: 10px 0;
+    padding: 20px;
+    background-color:#fff;
+}
+form{
+    margin: 20px 0;
+    padding: 20px;
+    background-color:#f9f9f9;
+    border: 1px solid #ddd;
+}
+label{
+    display: block; /*정렬*/
+    font-size: 20px;
+}
+input[type="text"], textarea{
+    width: 100%;
+    padding: 10px;
+    font-size:16px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin:5px 0;
+}
+button[type="submit"]{
+    font-family: 'establishRetrosansOTF';
+    background-color: #007bff;
+    color:#fff;
+    border: none;
+    padding:10px 20px;
+    font-size: 18px;
+    cursor:pointer;
+}

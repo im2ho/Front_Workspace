@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>댓글쓰기</h1>
+        <div>
+            <input id="commentInput" placeholder="댓글을 작성해주세요">
+            <button onclick="addComment()">등록</button>
+            <div id="comments">
+                <!--등록한 댓글이 표시되는 구역-->
+
+            </div>
+        </div>
+    </body>
+    <foot></foot>
+    <script>/*script는 head내부 or foot 밑에 작성하는게 정석*/
+        function addComment(){
+            const commentInput = document.getElementById("commentInput");
+            const commentText = commentInput.value;
+
+            if(commentText.trim() === ""){
+                alert("내용이 없습니다. 댓글을 작성해주세요.");
+                return;
+            }
+
+            const commentsBox = document.getElementById("comments");
+            const commentDIV = document.createElement("div");
+            commentDIV.className="comment";
+            commentDIV.textContent = commentText;
+
+            commentsBox.appendChild(commentDIV);
+            commentsBox.value="";
+            
+        }
+    </script>
+</html>
