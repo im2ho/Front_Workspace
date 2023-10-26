@@ -1,55 +1,82 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            /*모든 버튼에 적용되는 효과*/
-            button{
-                background-color: #176b37;
-                color:white;
-                padding: 10px 20px;
-                cursor: pointer;
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.3); /*그림자 추가*/
-                transition: background-color 0.3s, box-shadow 0.3s; /*마우스 가져다대면 색상 반짝이기*/
-            }
-
-            /*마우스 호버시 스타일 변경*/
-            button:hover{
-                background-color: cornflowerblue;
-                box-shadow: 20px 20px 5px rgb(20 26 239/50%); /*그림자 오퍼시티*/
-            }
-            .container{
-                max-width: 800px; /*최대 너비 지정*/
-            }
-
-            h1 {
-                text-align: center; /*어디서든지 h1은 페이지 가운데에 잇다*/
-            }
-        </style>
+        <!--css에서 style 가져오기-->
+        <link rel="stylesheet" type="text/css" href="../html/css/styles.css"><!--연결된 css의 타입이 text-->
+        <!--
+            ./ : 현 위치에 동급인 위치에 있는 파일이 보임 "./css/styles.css"
+            ../ : "../html/css/styles.css"
+        -->                    
     </head>
     <body>
         <div class="container">
             <h1>덤딤 메뉴</h1>
-            <ul>
+            <ul class="post-list">
                 <!--게시물 목록 작성-->
-                <li>
+                <li class="post">
                     <h2>샐러디 역삼점</h2>
                     <p>메뉴 더보기 ☞ <a href="fishing.html"> 클릭 </a></p>
                 </li>
                 <li>
+                    <h2>신가네 솥뚜껑 볶음밥</h2>
+                    <p>김치볶음밥 마딛다</p>
+                </li>
+                <li class="post">
                     <h2>명동칼국수 역삼점</h2>
                     <p>만두칼국수 9000원</p>
                 </li>
-                <li>
+                <div class="form-container">
                     <!--메뉴 추가-->
                     <h2>새 게시물 작성하기</h2>
-                    <form>
+                    <form class="form-container textarea">
                         <input type="text" placeholder="제목">
                         <textarea placeholder="내용을 작성하세요"></textarea>
+
                         <div class="button">
-                            <button type="submit">작성완료</button>
+                            <button type="submit" id="post-button">작성완료</button>
+                            <!--
+                                class: 디자인할 때 사용
+                                id: 고유하게 식별해서 js에서 사용
+                            -->
                         </div>
+
+                        <button onClick="baboButton()">누르면 바보</button>
+                        
+                        <p id="joinCheck">회원가입을 하는 중입니다</p>
+                        <button onclick="joinButton()">회원가입 하기</button> 
                     </form>
-                </li>
+                    <script>
+                        function baboButton(){
+                            alert("당신은 바보입니다");
+                        }
+                        function joinButton(){
+                            var txt; //변수명 txt로 지정
+                            if(confirm("버튼 클릭!")){
+                                txt = "클릭 완료";
+                            } else{
+                                txt = "회원가입 실패";
+                            }
+                            document.getElementById("joinCheck").innerHTML=txt;
+                        }
+                    </script>
+                    <script> /*스크립트 위치 주의*/
+                        /* addEventListener :새로운 이벤트를 불러옴
+                           Dom :...이 머임?
+                        */
+                        document.addEventListener("DOMContentLoaded",function(){
+                            //1. HTML버튼 ID 가져오기
+                            const postButton = document.getElementById("post-button");
+
+                            //버튼을 클릭할 때 실행될 항수 정의
+                            function buttonClick(){
+                                alert("게시물의 내용을 작성해주세요.");
+                            }
+                            //버튼 클릭 시 실행될 함수 연결
+                            postButton.addEventListener("click",buttonClick);
+
+                        });
+                    </script>
+                </div>
             </ul>
         </div>
     </body>

@@ -1,0 +1,45 @@
+/*모든 버튼에 적용되는 효과*/
+button{
+    background-color: #176b37;
+    color:white;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3); /*그림자 추가*/
+    transition: background-color 0.3s, box-shadow 0.3s; /*마우스 가져다대면 색상 반짝이기*/
+}
+
+/*마우스 호버시 스타일 변경*/
+button:hover{
+    background-color: cornflowerblue;
+    box-shadow: 20px 20px 5px rgb(20 26 239/50%); /*그림자 오퍼시티*/
+}
+.container{
+    max-width: 800px; /*최대 너비 지정*/
+}
+h1 {
+    text-align: center; /*어디서든지 h1은 페이지 가운데에 잇다*/
+}
+.post{
+    background-color: #f5f5f5;
+    border: 1px solid #ccc; /*solid: 실선 테두리, 1px: 선 두께*/
+    /*solid, dotted, dashed, double, none(테두리X) 등 종류 여러가지*/
+    padding: 10px;
+    margin-bottom: 10px; /*게시글 사이 간격*/
+}
+.post-list{
+    list-style-type:none; /*목록 앞에 표시되는 도트 사라짐*/
+    padding: 0;
+}
+.post-list li{/*post-list를 쓰는 li에 공통적으로 적용되는 요소*/
+    margin: 0;
+    padding: 0;
+}
+.form-container{
+    margin-top: 20px; /*바로 위 영역이랑 공간을 띄우고싶을 때*/
+}
+/*form-container를 쓰는textarea와 input에 적용*/
+.form-container textarea, input[type="text"]{ /*input의 경우 text타입인 곳에만 효과 적용*/
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
