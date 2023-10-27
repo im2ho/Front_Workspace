@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>내 블로그</title>
-        <style>
+        <style> /*class는 css, id는 js(기능)*/
             *{ /*전체적용*/
                 box-sizing: border-box;
             }
@@ -30,10 +30,9 @@
                 color:aliceblue;
             }
             nav{
-                
                 float: left;
                 width: 30%;
-                height: 600px;
+                height: 800px;
                 background-color: rgb(4, 95, 4);
             }
             nav ul{
@@ -56,7 +55,7 @@
                 float: left; /*위치설정*/
                 padding: 20px;
                 width: 70%;
-                height: 600px;
+                height: 800px;
                 background-color: rgb(192, 219, 187);
             }
             section::after{
@@ -72,24 +71,44 @@
                 text-align: center;
                 color: black; /*글자색깔*/
             }
-            .visitor{
-                font-family: 'Giants-Inline';
-                background-color:floralwhite;
-                padding: 10px;
-                height: auto;
-            }
-            .visitors{
-                font-family: 'Giants-Inline';
-                background-color:rgb(255, 255, 255);
-                padding: 10px;
-                height: auto;
-            }
             /*모바일 버전.. 너비 최대치 600px로 할거임..*/
             @media (max-width:600px){
                 nav,article{
                     width: 100%;
                     height: auto;
                 }
+            }
+            .create-post{
+                text-align: center;
+            }
+            input[type="text"]{
+                width: 90%;
+                margin-bottom: 2px;
+            }
+            textarea{
+                width: 90%;
+                height: 100px;
+                padding: 5px; /*어쩐지 글자 공간이 띄워진다*/
+                margin-bottom: 10px;
+            }
+            .newpost{
+                font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-align: left;
+                margin-left: 20px;
+            }
+            button{
+                display: block;
+                margin: 10px auto;
+                background-color: darkgreen;
+                color:white;
+                float: right;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+            button:hover{ /*마우스를 가져다댔을 때*/
+                background-color: #005bb7;
             }
         </style>
     </head>
@@ -106,7 +125,7 @@
                 <nav>
                     <ul>
                         <li><img src="제과제빵점.jpg" style="height:200px"></li>
-                        <p>제 블로그에 오신 모든 분들 <br>즐건 오타쿠 라이프 응원합니다.</p>
+                        <p>제 블로그에 오신 모든 분들 <br>즐건 오타쿠 라이프 응원합니다.^^</p><br>
                         <li>공지사항</li><br>
                         <li>어드벤처 타임</li><br>
                         <li>DC코믹스</li><br>
@@ -115,43 +134,108 @@
                     </ul>
                 </nav>
                 <article>
-                    <div class="visitor">
-                        <label>방명록 쓰기</label>
-                        <div class="comment">
-                            <input id="commentInput" minlength="10" style="height: 100px; width:400px;" placeholder="내용">
-                            <button onclick="addComment()">방명록 등록</button>
-                        </div>
+                    <!--
+                    <div id="posts">게시물 추가 공간</div>
+                    <div class="newpost">
+                        <P>NEW POST</P>
                     </div>
-                    <br>
-                    <div class="visitors">
-                        <p>★☆★☆★☆★☆★☆★☆★VISITORS★☆★☆★☆★☆★☆★☆★</p>
-                        <div id="comments">
-                            <!--등록한 댓글이 표시되는 구역-->
-                        </div>
-                    </div>
+                    <div class="create-post">
+                        <form id="postForm">
+                            <input type="text" placeholder ="제목" id="title" name="title" required><br>
+                            <textarea id="content" placeholder ="글 작성" name="content" required></textarea>
+                            
+                            <button type="submit">Upload</button>
+                            
+                        </form>
+                    -->
+                    </div> <!--container-->
+                    <!--글을 작성 창에서 따로 작성 후 메인에는 글만 올라오게끔 만든다-->
+                    <ul id="blogPostList">
+                        <!--작성한 글의 리스트가 올라오는 곳-->
+                    </ul>
+                    <button id="createPostButton">글쓰기</button>
                 </article>
             </section>
             <footer>
                 <p>후원하기: 우리 1002-159-2264-96</p>
             </footer>
             <script>
-                function addComment(){
-                    const commentInput = document.getElementById("commentInput");
-                    const commentText = commentInput.value;
+                /*
+                const postForm = document.getElementById("postForm");
+                const posts = document.getElementById("posts");
+                const postArray = [];
 
-                    if(commentText.trim()===""){/*commentText.trim()===""*/
-                        alert("방명록은 최소 0글자 이상이어야합니다.")
-                        return;
-                    }
+                postForm.addEventListener("submit",function(event){
+                    event.preventDefault();
+                    const title = postForm.title.value;
+                    const content = postForm.content.value;
+                    const date = new Date();
+                    const post = {
+                        title,
+                        content,
+                        date,
+                        comments:[],
+                    };
+                    postArray.push(post);
+                    
+                    const postDiv = document.createElement("div");
+                    postDiv.classList.add("post");
+                    postDiv.innerHTML = `
+                        <h3>${title}<h3>
+                        <p>${content}</p>
+                        <p>게시일 : ${date.toLocaleString()}</p>
+                    `;
 
-                    const commentsBox = document.getElementById("comments");
-                    const commentDIV = document.createElement("div");
-                    commentDIV.className="comment";
-                    commentDIV.textContent = commentText;
+                    const deleteButton = document.createElement("button");
+                    deleteButton.classList.add("delete-button");
+                    deleteButton.innerHTML = "삭제";
+                    deleteButton.addEventListener("click",() => {
+                        postArray.splice(postArray.indexOf(post),1);
+                        posts.removeChild(postDiv);
+                    });
 
-                    commentsBox.appendChild(commentDIV);
-                    commentsBox.value="";
-                }
+                    const commentForm = document.createElement("form");
+                    commentForm.innerHTML = `
+                        <input type="text" name="comment" placeholder="댓글추가하기">
+                        <button type="submit">등록</button>
+                    `;
+
+                    commentForm.addEventListener("submit",function(event){
+                        event.preventDefault();
+                        const commentText = commentForm.comment.value;
+                        const comment = {
+                            text : commentText,
+                            date : new Date(),
+                        };
+
+                        post.comments.push(comment);
+                        const commentDiv = document.createElement("div");
+                        commentDiv.classList.add("comment");
+                        commentDiv.innerHTML = `
+                            <P>${commentText}</P>
+                            <p>게시일 : ${comment.date.toLocaleString()}</p>
+                        `;
+                        commentForm.comment.value = "";
+                        postDiv.appendChild(commentDiv);
+                    });
+
+                    postDiv.appendChild(deleteButton);
+                    postDiv.appendChild(commentForm);
+                    posts.appendChild(postDiv);
+
+                })
+                */
+                //외부에서 작성한 글이 메인에 올라오게 하기
+                const blogPostList = document.getElementById("blogPostList");
+                const savedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+                savedPosts.forEach(post => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = post.content;
+                    blogPostList.appendChild(listItem);
+                });
+                document.getElementById("createPostButton").addEventListener("click",function(){
+                    window.location.href="blog-post.html";
+                })
             </script>
         </div>
     </body>

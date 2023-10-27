@@ -1,0 +1,32 @@
+
+body{
+     font-family: Arial, Helvetica, sans-serif;
+     background-color: #d8d7d7;
+     margin:10px;
+     padding: 0;
+}
+h1{
+     text-align: center;
+}
+textarea{
+     width: 80%;
+     max-width: 600px;
+     margin: 0 aunto;
+     display: block;
+     padding: 10px;
+}
+button{
+     display: block;
+     margin: 10px auto;
+     background-color: #0078d4;
+     color:#fff;
+     border: none;
+     padding: 10px 20px;
+     cursor: pointer;
+}
+button:hover{ /*마우스를 가져다댔을 때*/
+     background-color: #005bb7;
+}
+ul{
+     list-style-type: none;
+}
