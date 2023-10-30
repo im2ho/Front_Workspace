@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>호박고구마</title>
+        <style>
+            #myAudio{
+                margin: 0 auto;
+                max-width: 80%;
+                border: 2px solid #f08080;
+                border-radius: 30px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            }
+            audio::-webkit-media-controls-panel{
+                background-color: white;
+            }
+            audio::-webkit-media-controls-play-button{
+                background-color: #f08080;
+                border: 2px solid #f08080;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Music is my Life...</h1>
+        <h2>무식은 나의 삶</h2>
+        <audio id="myAudio" controls>
+            <source src="호박스 기차.mp3" type="audio/mpeg">
+        </audio>
+        <script>
+            //자동 재생을 위한 JS코드
+            const audio = document.getElementById('myAudio');
+            audio.play();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>회원가입</title>
+        <style>
+            @font-face {
+                font-family: 'Giants-Inline';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+            }
+            *{
+                box-sizing: border-box;
+                width: 500px
+            }
+            header{
+                width:100%;
+                background-color: black;
+                font-family: 'Giants-Inline';
+                text-align: center;
+                color:white;
+            }
+            section{
+                margin-top: 10px;
+            }
+            button{
+                background-color: black;
+                border:none;
+                height: 40px;
+                width: 90px;
+                padding: 10px 20px;
+                color: white;
+                cursor: pointer;
+                margin: 1%;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h2>회원가입</h2>
+        </header>
+
+        <section style="text-align: center; background-color: lightgray;">
+            <h3>가입 목록</h3>
+            <ul style="list-style: none;">
+                <li id="user-list"></li>
+            </ul>
+        </section>
+    
+        <section style="text-align: center;">
+            <button id="add-user">Sign Up</button>
+        </section>
+
+        <script>
+            function displayUsers(){
+                const userList = document.getElementById('user-list');
+                userList.innerHTML = "";
+
+                for(let i=0 ; i < localStorage.length ; i++){
+                    const key = localStorage.key(i);
+
+                    if(key.startsWith("user-")){
+                        const user = JSON.parse(localStorage.getItem(key));
+                        const infoItem = document.createElement("li");
+                        infoItem.innerHTML =
+                            `<a href="#" data-key=${key}>${post.title}</a>`;
+                        userList.appendChild(infoItem);
+                    }
+                }
+
+                const userLinks = document.querySelectorAll("#user-list a");
+                userLinks.forEach((link) => {
+                    link.addEventListener('click',(e) =>{
+                        e.preventDefault();
+                        const key =link.getAttribute('data-key');
+                        const user = JSON.parse(localStorage.getItem(key));
+                       
+                        const signupWindow = window.open('','','width=400 height=400');
+
+                        signupWindow.document.write('<h2 style="text-align:center;">회원가입</h2>');
+                        signupWindow.document.write(`<p style="text-align:center;">ID : ${user.id}</p>`);
+                        signupWindow.document.write(`<p style="text-align:center;">pw : ${user.id}</p>`);
+                    });
+                })
+            }
+
+            document.getElementById("add-user").addEventListener('click',()=>{
+                const signupWindow = window.open('','','width=400, height=400');
+                const signupDocument = signupWindow.document;
+
+                signupDocument.write('<h2>회원가입</h2>');
+                signupDocument.write('<input type="text" id="user-id" placeholder="id"><br>');
+                signupDocument.write('<input type="text" id="user-pw" placeholder="password"><br>');
+                signupDocument.write('<button id="save-user">Go!</button>');
+
+                signupDocument.getElementById('save-user').addEventListener('click',() => {
+                    const id = signupDocument.getElementById('user-id').value;
+                    const pw = signupDocument.getElementById('user-pw').value;
+
+                    if(id && pw){
+                        const userKey = `user-${Date.now()}`;
+                        const user = {id,pw};
+                        localStorage.setItem(userKey,JSON.stringify(user));
+                        displayUsers();
+                        signupWindow.close();
+                    }
+                });
+            });
+
+            signupWindow.close();
+        </script>
+    </body> 
+</html>
