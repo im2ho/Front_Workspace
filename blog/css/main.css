@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Giants-Inline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+header{
+    width:800px;
+    padding:10px;
+    text-align: center;
+    background-color: darkgreen;
+    color:white;
+    font-family: 'Giants-Inline';
+}
+.container{
+    width: 800px;
+    background-color: ivory;
+}
+aside{
+    width:20%;
+    float: left;
+    background-color: rgb(132, 189, 118);
+    text-align: center;
+}

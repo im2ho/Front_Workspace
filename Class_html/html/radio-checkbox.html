@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>라디오 버튼과 체크박스</title>
+        <link rel="stylesheet" href="../css/radio-checkbox.css">
+    </head>
+    <body>
+        <h2>라디오 버튼 예제</h2>
+        <form>
+            <label>
+                <input type="radio" name="gender" value="male" id="maleRadio">
+                남성
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female" id="femaleRadio">
+                여성
+            </label>
+            <label>
+                <input type="radio" name="gender" value="other" id="otherRadio">
+                기타
+            </label>
+        </form>
+        <p id="genderResult">선택된 성별 : </p>
+
+        <h2>체크박스 예제</h2>
+        <form>
+            <label>
+                <input type="checkbox" name="startingPokemon" value="fire" id="fireCheckbox">
+                불꽃숭이
+            </label>
+            <label>
+                <input type="checkbox" name="startingPokemon" value="water" id="waterCheckbox">
+                팽도리
+            </label>
+            <label>
+                <input type="checkbox" name="startingPokemon" value="grass" id="grassCheckbox">
+                모부기
+            </label>
+        </form>
+        <p id="pokemonResult">선택된 포켓몬 : </p>
+
+        <script src="../js/radio-checkbox.js"></script>
+    </body>
+</html>

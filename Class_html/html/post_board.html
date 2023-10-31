@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>블로그 게시판</title>
-        <link rel="stylesheet"  type="text/css" href="./css/styles.css">
+        <link rel="stylesheet" type="text/css" href="../css/styles.css">
     </head>
     <body>
         <div id="container">
@@ -10,7 +10,7 @@
             <img src="https://t1.daumcdn.net/cfile/tistory/2438AA345786E2A91A">
             
             <div id="posts">
-                <!-- 게시물 추가하는 공간-->
+                <!--게시물 추가 구역-->
             </div>
             <h2>새 게시물 작성</h2>
             <form id="postForm">
@@ -35,7 +35,7 @@
                     title,
                     content,
                     date,
-                    comments:[],
+                    comments:[], //,가 마지막 요소에도 붙는다;;
                 };
                 postArray.push(post); //게시물을 배열에 추가
 
@@ -45,56 +45,57 @@
                 postDiv.innerHTML = `
                 <h3>${title}</h3>
                 <p>${content}</p>
-                <p>게시일 : ${date.toLocaleString()}</p>
-
+                <p>게시일 : ${date.toLocaleString()}</P>
                 `;
 
                 //삭제버튼 생성
-                const deleteButton = document.createElement("button");
-                deleteButton.classList.add("delete-button");
-                deleteButton.innerHTML = "삭제하기";
-                deleteButton.addEventListener("click",() => {
+                const deleteButton = document.createElement("button"); //deleteButton에 변수 할당
+                deleteButton.classList.add("delete-button"); //button에 delete-button이라는 class 적용
+                deleteButton.innerHTML = "삭제"; //innerHTML: 텍스트에 삭제라는 이름 넣기
+                //삭제 이벤트 생성
+                deleteButton.addEventListener("click",()=>{ //삭제에는 매개변수 필요X ()
                     postArray.splice(postArray.indexOf(post),1);
-                    posts.removeChild(postDiv);
+                    posts.removeChild(postDiv); //posts에서 삭제하기
                 });
 
-                //댓글 폼 생성
+                //댓글 작성 폼 생성
                 const commentForm = document.createElement("form");
                 commentForm.innerHTML = `
                     <input type="text" name="comment" placeholder="댓글추가하기">
-                    <button type="submit">게시</button>
+                    <button type="submit">게시</button>    
                 `;
 
-                commentForm.addEventListener("submit", function(event) {
+                //작성한 댓글을 저장 및 전달하는 스크립트 작성
+                commentForm.addEventListener("submit",function(event) { //제출했을 때 ..이벤트를 전달 받았을 때 작동하는 함수
                     event.preventDefault();
                     const commentText = commentForm.comment.value;
                     const comment = {
                         text : commentText,
-                        date : new Date(),
+                        date : new Date(), //마지막 요소에도 , 붙이기
                     };
 
                     post.comments.push(comment);
                     const commentDiv = document.createElement("div");
                     commentDiv.classList.add("comment");
+                    /*commentDiV.classList.add("comment");*/
                     commentDiv.innerHTML = `
                         <p>${commentText}</p>
                         <p>게시일 : ${comment.date.toLocaleString()}</p>
                     `;
+                    //댓글 입력 초기화
                     commentForm.comment.value = "";
                     postDiv.appendChild(commentDiv);
                 });
 
-                postDiv.appendChild(deleteButton);
-                postDiv.appendChild(commentForm);
+                postDiv.appendChild(deleteButton); //삭제버튼 생성(Div공간에 넣어서, 게시글이 삭제되면 버튼도 함께 삭제됨)
+                postDiv.appendChild(commentForm); //댓글추가 버튼 생성?
 
-
+                //게시물 목록 추가
                 posts.appendChild(postDiv);
 
-
-
-
-
-
+                //게시글 입력 초기화
+                postForm.title.value = "";
+                postForm.content.value = "";
             })
         </script>
     </body>
