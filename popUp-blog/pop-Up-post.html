@@ -105,7 +105,7 @@
                 const popupWindow = window.open('','','width=400, height=400');
                 const popupDocument = popupWindow.document; //document객체 가져와서 인스턴스 생성
 
-                //게시글 작성 양식 추가
+                //팝업창에 게시글 작성 양식 추가
                 popupDocument.write('<h2>아이디 찾기</h2>');
                 popupDocument.write('<input type="text" id="post-title" placeholder="핸드폰번호"><br>');
                 popupDocument.write('<input type="text" id="post-content" placeholder="e-mail"><br>');
@@ -114,6 +114,7 @@
 
                 //저장버튼 클릭하면 새로운 게시물 저장하고 목록 갱신
                 popupDocument.getElementById('save-post').addEventListener("click",() => {
+                    
                     const title = popupDocument.getElementById("post-title").value;
                     const content = popupDocument.getElementById("post-content").value;
 
@@ -122,9 +123,9 @@
                     if(title && content){
                         //새로운 게시물을 저장하기 위해 고유한 키(key:이름) 생성
                         //Date.now() 함수 > 현재 시간 이용해 고유키 생성 > localStorage에서 게시물 식별
-                        const postKey = 
-                        `post-${Date.now()}`;
+                        const postKey = `post-${Date.now()}`;
                         const post = {title,content};
+                        //문자열로 저장..
                         localStorage.setItem(postKey, JSON.stringify(post)); //JSON밑에있는 string값 가져와서 post작성
                         displayPosts();
                         popupWindow.close();

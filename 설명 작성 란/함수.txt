@@ -1,0 +1,33 @@
+<함수 Function>
+    코드를 재사용 가능한 블록을 생성하는데 사용하거나, 구조를 관리하게 쉽게 묶어둔 것
+
+    코드 :
+        function 함수명(매개변수) {
+            실행될 문장
+        }
+    
+<예시>
+function greet(name){
+    console.log(`안녕,${name}!`);
+}
+
+작성해준 함수는 호출해서 사용(function Call)
+greet("Say");
+
+반환값(Return) : 어떤 계산이나 결과에 대한 값을 반환
+undefined : 반환값이 없을 때는 undefined가 반환됨
+
+function 함수명(매개변수){
+    return 반환될 값;
+}
+
+function add(a,b){
+    return a + b;
+}
+const result = add(5,3); //결과로 8 저장
+
+-----------------------------------------------------------
+
+(매개변수) => {
+    //다수의 표현식
+}

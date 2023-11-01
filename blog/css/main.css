@@ -27,4 +27,14 @@ aside{
     float: left;
     background-color: rgb(132, 189, 118);
     text-align: center;
+    margin-top: 10px;
+}
+button{
+    background-color: darkgreen; 
+    color:white; 
+    border:none; 
+    cursor: pointer;
+    font-size: small;
+    float:right; 
+    margin-right: 10px;
 }

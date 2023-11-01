@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>칸쵸네 블로그</title>
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>
+        <header>
+            <h1>칸쵸네 블로그</h1>
+        </header>
+        <div class=".container">
+            <aside>
+                <div id="post-list"></div><!--img add -->
+                <button id="addButton">add</button>  
+            </aside>
+        </div><!--.container-->
+
+        <script>
+        //img main 
+        function displayPosts(){
+            const postList = document.getElementById("post-list");
+            postList.innerHTML='';
+            
+            const key = localStorage.key(0); //img key add
+            const post = JSON.parse(localStorage.getItem(key));
+            const listItem = document.createElement('div');
+            listItem.innerHTML=`<img src="${post.image}" style="width:90%" alt="board img">`;
+            postList.appendChild(listItem);
+        }
+            
+        //add 버튼 클릭 시 새 창에서 프로필 사진 업로드 할 수 있는 팝업창 생성
+        document.getElementById("addButton").addEventListener("click", function(){
+            const popupWindow = window.open('','','width=400, height=400');
+            const popupDocument = popupWindow.document;
+
+            //사진 파일 선택 양식
+            popupDocument.write('<h2>파일 선택</h2>');
+            popupDocument.write('<input type="file" id="image-upload" accept="image/*">'); //파일선택
+            popupDocument.write('<img id = "img-preview" style.display="none">'); //img src (팝업창에서는 안보이게 none)
+            popupDocument.write('<button id="uploadButton">upload</button>'); //upload 버튼
+        
+            //upload버튼 클릭하면 새로운 프로필 사진 저장
+            const imageUpload = popupDocument.getElementById("image-upload");
+            const imgPreview = popupDocument.getElementById("img-preview");
+
+            imageUpload.addEventListener('change',()=>{
+                const selectImg = imageUpload.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imgPreview.src = e.target.result;
+                    console.log(imgPreview.src);
+                };
+                reader.readAsDataURL(selectImg);
+            });
+
+            popupDocument.getElementById('uploadButton').addEventListener("click", () => {
+                console.log("checking");
+
+                localStorage.clear();
+                const image64 = imgPreview.src;
+
+                const imgKey = `post-${Date.now()}`;
+                const imgView = {image : image64};
+                localStorage.setItem(imgKey, JSON.stringify(imgView));
+                displayPosts();
+                popupWindow.close();
+            });
+        });
+
+        displayPosts();
+        </script>
+    </body>
+</html>

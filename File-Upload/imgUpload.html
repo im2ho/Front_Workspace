@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이미지 파일 업로드와 썸네일</title>
+    </head>
+    <body>
+        <h1>이미지 파일 업로드 & 업로드한 파일 미리보기</h1>
+        <!--
+            input type을 file로 지정하고, 허용되는 파일 유형을 image로 제한
+            * : jpg, jpeg, png 등 다양한 이미지 파일을 모두 허용
+            ex) accept = "image/png" :png만 허용
+        -->
+        <input type="file" id="fileInput" accept="image/*">
+        <button id="uploadButton">업로드</button>
+
+        <div id="imageContainer">
+            <img id="uploadImage" style="max-width: 50%;">
+        </div><!--imageContainer-->
+        <script>
+            //파일을 업로드하는 버튼 클릭시 이벤트 처리
+            document.getElementById("uploadButton").addEventListener("click", function(){
+                var fileInput = document.getElementById("fileInput");
+                var uploadImage = document.getElementById("uploadImage");
+                var imageContainer = document.getElementById("imageContainer");
+
+                //파일이 존재할 경우 이미지를 보여주기
+                /*  
+                type="file" 밑에 존재하는 객체의 종류
+                    files: 사용자가 선택한 파일에 접근할 수 있게해줌
+                    files.length : 사용자가 선택한 파일의 수를 나타내는 속성. 여러 파일을 선택했을 때 그 개수를 측정
+                    files.[index] : 선택한 파일 목록에 존재하는 파일의 위치 (0부터 시작해서 length보다 작은 값에 접근 가능)
+                */
+                if(fileInput.files.length > 0){
+                    //파일 입력 필드에서 선택한 파일 목록에서 첫 번째 파일 가져온 후,
+                        //마치 사용자가 한 파일만 선택한 것이라고 판단하게끔..
+                    var file = fileInput.files[0]; //첫 번째 파일
+                    //파일을 읽기 위한 FileReader() 객체 생성 (빈 공간)
+                    var reader = new FileReader();
+                    
+                    //FileReader에는 onload 메서드가 존재
+                    //파일 읽기가 성공하면 읽기 결과를 표시
+                    reader.onload = function (e) { //e:이벤트
+                        //UploadImage.src : 이미지 주소를 추가
+                        //e.target.result : FileReader가 읽은 파일의 데이터 URL을 나타냄
+                        //e.target.result = reader.result
+                        uploadImage.src = reader.result; //업로드 된 이미지를 표시
+
+                        //imageContainer에 스타일을 적용해서 이미지 보여주기 (block 형식으로)
+                        imageContainer.style.display = "block";
+                    }
+                    /*
+                        FileReader 사용해서 선택한 file을 DataURL로 읽은 후
+                        문자열로 표현하여 표시
+                    */
+                    reader.readAsDataURL(file); //파일을 Data URL로 읽기
+                } else{
+                    alert("선택된 파일이 없습니다");
+                }
+            })
+        </script>
+    </body>
+</html>

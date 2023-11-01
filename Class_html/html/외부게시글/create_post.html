@@ -20,9 +20,9 @@
           content: blogPostContent,
         };
 
-        const savedPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
-        savedPosts.push(blogPost);
-        localStorage.setItem("blogPosts", JSON.stringify(savedPosts));
+        const postList = [];
+        postList.push(blogPost);
+        localStorage.setItem("blogPosts", JSON.stringify(postList));
 
         alert("게시글이 저장되었습니다.");
 
