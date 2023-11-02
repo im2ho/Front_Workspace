@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>글쓰기</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>게시글 작성하기</h1>
+        <textarea id="newPost" placeholder="게시글 내용을 작성하세요"></textarea>
+        <button id="saveButton">작성완료</button>
+
+        <script>
+            //2.saveButton을 누르면 작성한 글이 저장됨
+            document.getElementById("saveButton").addEventListener("click",()=>{
+                //textarea에 작성한 값 newPost 변수에 할당
+                const newPost = document.getElementById("newPost").value;
+
+                //newPost가 공백인지 아닌지 if
+                if(newPost.trim()!==""){
+                    const timeStamp = new Date().getTime();
+                    const mainPost = {
+                        id : timeStamp,
+                        content : newPost,
+                    };
+
+                    const savedPost = JSON.parse(localStorage.getItem("mainPosts")) || [];
+                    savedPost.push(mainPost);
+                    localStorage.setItem("mainPosts",JSON.stringify("savedPost"));
+
+                    alert("게시글이 저장되었습니다");
+
+                    window.location.href="blog-main.html";
+                } else {
+                    alert("게시글 내용을 입력하세요");
+                }
+            });
+            
+        </script>
+    </body>
+</html>

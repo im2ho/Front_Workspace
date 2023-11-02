@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>타이머 카운트 다운</title>
+    </head>
+    <body>
+        <h1>아~ 여러분 새해가 5초 남앗습니다 빨리 소원비세요</h1>
+        <h1 id="number"></h1>
+        <h1 id="msg"></h1>
+        <div id="bang"></div>
+
+        <script>
+            //초기 숫자 설정
+            //만약에 시작 숫자를 5로 설정하고싶으면 5로 설정
+            let number = 5;
+
+            function countDown(){
+                let count = document.getElementById("number");
+
+                //현재 숫자를 표시
+                count.innerHTML = number;
+
+                //현재 숫자를 1로 감소
+                number--;
+                if(number >= 0){
+                    setTimeout(countDown, 1000); //1초
+                }
+            }
+            countDown();
+
+            function displayMsg(){
+                let msgDiv = document.getElementById("msg");
+                msgDiv.innerHTML = "Happy New Year!";
+            }
+            
+            setTimeout(displayMsg,5000);
+
+            function displayImage(){
+                let bangImg = document.getElementById("bang");
+                bangImg.innerHTML = '<img src="../image/happynewyear.jpg">';
+           }
+
+           setTimeout(displayImage,5000);
+        </script>
+    </body>
+</html>

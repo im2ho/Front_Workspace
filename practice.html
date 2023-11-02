@@ -24,7 +24,6 @@
                     imageElement.alt = '이미지';
                     postList.appendChild(imageElement);
                 }
-            
         }
 
         // add-post 버튼을 클릭했을 때 새 창에서 이미지 업로드 
@@ -54,7 +53,7 @@
             });
 
             popupDocument.getElementById('save-post').addEventListener('click', () => {
-                
+                //파일 선택 후 저장 버튼 누르면 원래 localStorage 저장소 내용 삭제
                 localStorage.clear();
                 const imageBase64 = imagePreview.src;
 

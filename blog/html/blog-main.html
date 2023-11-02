@@ -8,14 +8,36 @@
         <header>
             <h1>칸쵸네 블로그</h1>
         </header>
-        <div class=".container">
-            <aside>
+        <div class="container"><!--width: 800px-->
+            <aside><!--max-width: 25%-->
                 <div id="post-list"></div><!--img add -->
-                <button id="addButton">add</button>  
+                <div>
+                    <button class ="profileButton" id="addButton">update</button><br>
+                    <p style="font-family: 'JeonjuCraftGoR';">블로그 방문을 환영합니다</p>
+                </div>
+                <section>
+                    <button>notice</button><br>
+                    <button>visitor Books</button><br>
+                    <button>Pokemon Gallery</button><br>
+                    <button>Log-in</button>
+                </section>
             </aside>
+            <article>
+                <div clas="postArea" style="text-align: center;">
+                    <h1 style="text-align: center; font-family: 'Giants-Bold';">main POST</h1>
+                    <button class="newPostButton" id="newPostButton">글쓰기</button>
+                
+                    <div id="postList">
+                        <!--글 올라올 곳-->
+                        <section>글이 써질까</section>
+                        <section>글쓰기 버튼 폐업했씁니다</section>
+                        <section>해결사 환영</section>
+                    </div>
+                </div>
+            </article>
         </div><!--.container-->
-
         <script>
+        //프로필 사진 업로드 스크립트
         //img main 
         function displayPosts(){
             const postList = document.getElementById("post-list");
@@ -24,7 +46,7 @@
             const key = localStorage.key(0); //img key add
             const post = JSON.parse(localStorage.getItem(key));
             const listItem = document.createElement('div');
-            listItem.innerHTML=`<img src="${post.image}" style="width:90%" alt="board img">`;
+            listItem.innerHTML=`<img src="${post.image}" style="width:85%; border:solid; border-width:2px;" alt="board img">`;
             postList.appendChild(listItem);
         }
             
@@ -69,6 +91,24 @@
         });
 
         displayPosts();
+        </script>
+        <script>
+            //게시글 작성 스크립트
+
+            //1.글쓰기 버튼 누르면 upload-post.html 페이지로 이동
+            const newPostButton = document.getElementById("newPostButton");
+            newPostButton.addEventListener("click",function(){
+                window.location.href="upload-post.html";
+            });
+
+            //2.localStorage에 저장된 글 불러오기 (key: mainPosts)
+            const postList = document.getElementById("postList");
+            const savedPosts = JSON.parse(localStorage.getItem("mainPosts")) || [];
+            savedPosts.forEach(post => {
+                const postItem = document.createElement("section");
+                postItem.textContent = post.content;
+                postList.appendChild(postItem);
+            });
         </script>
     </body>
 </html>

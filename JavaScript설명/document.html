@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            <li>리스트1</li>
+            <li>리스트2</li>
+        </ul>
+        <div id="say">쎄이</div>
+        <p class="hello">나이스 투 밑츄</p>
+        <p class="hello">푸핰</p>
+        <input type="text" name="userName" value="김칸쵸">
+        <script>
+            /*
+            document.getElementsByTagName("태그이름") :
+                html 문서에서 특정 태그 이름을 가진 모든 요소 선택
+
+            document.getElementById("아이디") :
+                html 문서에서 특정 아이디 값을 가진 요소 선택
+
+            document.getElementsByClassName("클래스이름"):
+                html 문서에서 특정 클래스(style)를 사용하는 모든 요소 선택
+
+            document.getElementsByName("name속성값")[자리값] :
+                html 문서에서 특정 name 속성값을 가진 모든 요소 선택
+            */
+            console.log(document.getElementsByTagName("li"));
+            console.log(document.getElementById("say"));
+            console.log(document.getElementsByClassName("hello"));
+
+            let u = document.getElementsByName("userName")[0];
+            console.log(u.value); //김칸쵸
+
+            //document.querySelectorAll(선택자들) :
+            document.querySelectorAll("ul li");
+            console.log(document.querySelectorAll("ul li"));
+        </script>
+    </body>
+</html>

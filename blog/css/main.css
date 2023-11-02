@@ -10,6 +10,15 @@
     font-weight: 700;
     font-style: normal;
 }
+@font-face {
+    font-family: 'JeonjuCraftGoR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/JeonjuCraftGoR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    box-sizing: border-box;
+}
 header{
     width:800px;
     padding:10px;
@@ -19,22 +28,67 @@ header{
     font-family: 'Giants-Inline';
 }
 .container{
-    width: 800px;
+    max-width: 800px;
     background-color: ivory;
-}
-aside{
-    width:20%;
-    float: left;
-    background-color: rgb(132, 189, 118);
-    text-align: center;
     margin-top: 10px;
 }
-button{
-    background-color: darkgreen; 
-    color:white; 
-    border:none; 
+aside{
+    width:30%;
+    float: left;
+    /*background-color: rgb(132, 189, 118);*/
+    text-align: center;
+}
+.profileButton{
+    background-color: white;
+    color:darkgreen; 
+    border:none;
     cursor: pointer;
     font-size: small;
-    float:right; 
+    float:right;
+    padding:0px;
+    margin-top: 5px;
+    margin-right: 15px;
+}
+aside section button{
+    font-family: 'Giants-Bold';
+    margin-top:10px;
+    background-color: gold;
+    width: 80%;
+    padding:5px;
+    border-radius: 10px 0;
+    cursor: pointer;
+}
+article{
+    width : 70%;
+    height: 800px;
+    /*max-height: 1000px;*/
+    float:right;
+    margin-bottom: 10px;
+    background-color: rgb(199, 235, 179);
+}
+.postArea{
+    text-align: center;
+}
+.newPostButton{
+    font-family: 'JeonjuCraftGoR';
+    background-color:darkgreen;
+    color:white;
+    border:none;
+    padding:5px;
     margin-right: 10px;
+}
+article section{
+    width: 90%;
+    border-radius: 10px;
+    border: solid;
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+footer{
+    width:800px;
+    padding:10px;
+    text-align: center;
+    background-color:gold;
+    font-family: 'Giants-Inline';
 }
