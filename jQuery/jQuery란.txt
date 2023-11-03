@@ -1,0 +1,27 @@
+제이쿼리(jQuery)
+    JavaScript 언어를 간편하게 사용할 수 있도록 단순화한 라이브러리
+
+<문법>
+
+//함수로 묶어줘야 할 경우
+$(function(){
+    $(선택자).동작함수();
+})
+
+$ : jquery에 접근을 할 수 있게 해주는 식별자
+선택자 : id나 class 태그명을 선택
+         > 원하는 html요소를 선택하고, 동작 함수를 정의내려 원하는 동작을 설정
+
+<jQuery 가지고 오는 방법>
+
+1. 주소로 가지고 오기
+
+    <script src="https://code.jquery.com/jquery-원하는버전.min.js"></script>
+
+2. jQuery 파일을 이용해서 가지고 오기
+
+    주소 예제 : https://code.jquery.com/jquery-3.7.1.js (다른 버전 원하면 검색해서 추가)
+    해당 창에서 마우스 우클릭 > 다른 이름으로 저장
+
+    저장한 파일 > 적당한 폴더에 넣어준 후 script src 변경
+    변경예제 : <script src="./jquery-3.7.1.js"></script>

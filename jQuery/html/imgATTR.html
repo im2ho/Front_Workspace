@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이미지 변경하기</title>
+        <style>
+            img{
+                width: 200px;
+                height: 300px;
+            }
+        </style>
+        <!--jquery파일 가져오기-->
+        <script src="../js/jquery-3.7.1.js"></script>
+        <script>
+            /*
+            attr() : jQuery 사용되는 메서드
+            **attribute : 속성
+                1. attr() 사용해서 속성 읽기
+                    const value = $("선택자").attr("속성이름");
+                    //이미지 요소 src 속성 값을 가져올 예제코드
+                    const srcValue = $("img").attr("src");
+
+                2. attr() 사용해서 속성값 변경하기
+                    $("선택자").attr("속성이름","새로운값");
+                    //이미지 요소의 src 속성 값을 변경
+                    $("img").attr("src","새로운이미지.jpg");
+
+                    만약 요소 전체가 아닌 특정 요소(태그)만 변경하고싶다면
+                    id나 class, name, alt등의 값을 이용해서
+                    요소에서 특정값만 변경할 수 있음
+                    $(선택자[속성값]).attr("src","새로운값");
+                    //이미지 요소의 src 속성 값을 특정 이미지 요소만 변경
+                    <img src="./img/cute1.png" alt="cute1">
+                    $("img[alt='cute1']").attr("src","./img/cute3.png");
+                    alt=cute1 값을 이용해서 alt에 cute1이 작성된 이미지만 변경
+            */
+           $(function(){
+                $("button").on("click",function(){
+                    $("img[alt='cute1']").attr("src","../img/cute3.png");
+                    $("img[alt='cute2']").attr("src","../img/cute4.jpg");
+                });
+           });
+        </script>
+    </head>
+    <body>
+        <button id="changeButton">이미지 변경하기</button>
+        <img id="img1" src="../img/cute1.png" alt="cute1">
+        <img src="../img/cute2.jpg" alt="cute2">
+
+        <!--jquery가 없을 경우의 스크립트
+        <script>//jquery가 없을 경우
+            document.getElementById("changeButton").addEventListener("click", ()=>{
+                document.getElementById("img1").src = "./img/cute3.png";
+            })
+        </script>-->
+    </body>
+</html>
